@@ -34,8 +34,34 @@ count [x]=1
 count (x:xs)=1+ count xs
 
 -- Or
+
 countAcc::[a]->Int
 countAcc list = countAcc' list 0 
     where 
         countAcc' [] acc = acc
         countAcc' (x:xs) acc = countAcc' xs (acc+1)  
+
+-- ************************************************
+-- (*) Reverse a list.
+-- ************************************************
+rev::[a]->[a]
+rev []= []
+--rev [x]=[x]
+rev (x:xs) = (rev xs)++[x]
+
+
+-- Or 
+revAcc:: [a]->[a]
+revAcc list = revAcc' list [] 
+        where 
+            revAcc' [] acc = acc
+            revAcc' (x:xs) acc = revAcc' xs (x:acc)
+
+-- ************************************************
+-- (*) Find out whether a list is a palindrome. A palindrome can be read forward or backward; 
+--     e.g. (x a m a x).
+-- ************************************************
+pal:: [a]->Bool 
+pal [] = True
+--pal xs= (head xs) == (last xs) -- &&(pal $ init $ tail xs)
+-- To be continued 
